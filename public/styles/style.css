@@ -1,10 +1,18 @@
 body {
     font: 24px Helvetica;
-    background-image: url(images/img.jpeg);
-    background-size: contain;
+    background: radial-gradient(aliceblue 13%, linen 80%);
+    background-size: cover;
     height: 970px;
     margin: 0;
 }
+
+footer{
+    text-align: center;
+    margin: 4px;
+    padding: 5px;
+    min-height: 40px;
+}
+
 .main {
     min-height: 800px;
     margin: 0px;
@@ -45,16 +53,24 @@ body {
     order: 3;
 }
 
-
 .content {
+    width: 262px;
+    height: 150px;
+    padding: 0;
+    display: flex;
+    flex-flow: row;
+    margin: 210px 10px 10px 0;
+    border:none;
+}
+
+.styleOfIframe {
     width: 260px;
     height: 146px;
     border: 1px solid lightgrey;
     display: flex;
     flex-flow: row;
-    margin: 210px 10px 10px 0px;
-    border-radius: 4px;
-    background-image: url(images/img.jpeg);
+    border-radius: 10px;
+    background: radial-gradient(aliceblue 88%, ghostwhite 12%);
 }
 
 .col1 {
@@ -123,12 +139,6 @@ body {
     outline: none;
 }
 
-img {
-    max-height: 50px;
-    max-width: 50px;
-    font-size: 16px;
-}
-
 .leftOnes {
     float: left;
     padding-left: 10px;
@@ -140,9 +150,15 @@ img {
 }
 
 .topOnes {
-    padding-left: 5px;
+    padding-left: 4px;
     vertical-align: text-bottom;
     font-size: 13px;
+}
+
+.centered {
+    margin: 0 auto;
+    padding-top: 20%;
+    font-size: 20px;
 }
 
 span {
@@ -153,19 +169,24 @@ span {
     line-height: 32px;
 }
 
+img {
+    max-height: 50px;
+    max-width: 50px;
+    border-radius: 7px;
+}
+
 b {
     color: black;
-    font-size: 15px;
+    font-size: 14px;
     padding-right: 2px;
 }
 
 a {
     font-size: 15px;
     text-decoration: none;
-    color:#008080;
+    color:#4c68d7;
 }
 
 a:hover {
-    font-size: 15px;
     text-decoration: underline;
 }

@@ -7,11 +7,10 @@ import smallImage from "../../public/styles/images/small.png";
 let repos;
 let users;
 
-class ContentContainer extends Component {
+class BadgePresenter extends Component {
 
 
   render() {
-
     if (!I.List.isList(this.props.responseData)) {
       repos = JSON.parse(this.props.responseData[0])[0];
       users = JSON.parse(this.props.responseData[1]);
@@ -23,7 +22,7 @@ class ContentContainer extends Component {
     }
 
     return (
-        <div className="content">
+        <div className="styleOfIframe">
             <div className="col1">
                 <div className="row_of_col1">
                     <a href={users.html_url || "https://github.com/404"}>
@@ -60,4 +59,4 @@ class ContentContainer extends Component {
   }
 }
 
-export default ContentContainer;
+export default BadgePresenter;

@@ -1,9 +1,8 @@
 import React, {Component} from "react";
-import {debounce} from "throttle-debounce";
 import {connect} from "react-redux";
 import {setResponse} from "../actions/setResponse";
 import {Request} from "projects/javascript/Request.js";
-import ContentPresenter from "../components/ContentPresenter";
+import BadgePresenter from "../components/BadgePresenter";
 import I from "immutable";
 
 
@@ -17,24 +16,10 @@ function mainApi(input = "nzakas") {
   return Promise.all([Request.get(url.repos), Request.get(url.users)]);
 }
 
-export class FormContainer extends Component {
-
-  constructor(props) {
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+export class BadgeContainer extends Component {
 
   componentWillMount() {
-    this.callSubmit();
-    this.callSubmit = debounce(520, this.callSubmit);
-  }
-
-  handleSubmit(evt) {
-    this.callSubmit(evt.target.value);
-  }
-
-  callSubmit(event) {
-    mainApi(event)
+    mainApi(this.props.params.userName)
       .then(res => {
         this.props.dispatch(setResponse(res));
       })
@@ -44,21 +29,12 @@ export class FormContainer extends Component {
   }
 
   render() {
-
     return (
         <div>
-            <ContentPresenter responseData={this.props.responseObject} />
-            <div className="formContainerDiv">
-                <input
-                    className="inputStyle"
-                    onKeyUp={this.handleSubmit}
-                    placeholder="Type your GitHub username"
-                />
-            </div>
+            <BadgePresenter responseData={this.props.responseObject} />
         </div>
     );
   }
-
 }
 
 function mapStateToProps(state) {
@@ -67,4 +43,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(FormContainer);
+export default connect(mapStateToProps)(BadgeContainer);
