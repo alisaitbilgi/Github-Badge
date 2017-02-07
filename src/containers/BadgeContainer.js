@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {setResponse} from "../actions/setResponse";
-import {Request} from "projects/javascript/Request.js";
+import {Request} from "genericxhr/Request";
 import BadgePresenter from "../components/BadgePresenter";
 import I from "immutable";
 
