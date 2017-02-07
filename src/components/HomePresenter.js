@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-class ContentContainer extends Component {
+export default class ContentContainer extends Component {
   render() {
     let path;
     if (this.props.takeUserName) {
@@ -14,4 +14,3 @@ class ContentContainer extends Component {
   }
 }
 
-export default ContentContainer;

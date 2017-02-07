@@ -15,8 +15,8 @@ footer{
 
 .main {
     min-height: 800px;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-flow: row;
     background-image: url(images/octopus.png);
@@ -54,8 +54,8 @@ footer{
 }
 
 .content {
-    width: 262px;
-    height: 150px;
+    width: 267px;
+    height: 155px;
     padding: 0;
     display: flex;
     flex-flow: row;
@@ -92,10 +92,10 @@ footer{
     flex-grow:1;
     width:55px;
     max-height: 46px;
-    color: #4c4a37;
+    background-color: lightcyan;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 12px;
-    line-height: 32px;
+    line-height: 56px;
     padding: 1px;
 }
 
@@ -161,6 +161,8 @@ footer{
     font-size: 20px;
 }
 
+
+
 span {
     color: #323231;
     font-family: "Source Sans Pro", sans-serif;
@@ -189,4 +191,13 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+svg {
+    max-height: 53px;
+    max-width: 49px;
+}
+
+p {
+    font-size: 8px;
 }

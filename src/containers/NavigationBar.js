@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Link} from "react-router";
 
 
-class NavigationBar extends Component {
+export default class NavigationBar extends Component {
 
   render() {
     return (
@@ -17,4 +17,3 @@ class NavigationBar extends Component {
   }
 }
 
-export default NavigationBar;

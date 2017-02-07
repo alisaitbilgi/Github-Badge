@@ -12,7 +12,6 @@ function mainApi(input = "nzakas") {
     users: `https://api.github.com/users/${input}`
   };
 
-  // "Request.get" method is coming from my generic XMLHttpRequest file on node_modules.
   return Promise.all([Request.get(url.repos), Request.get(url.users)]);
 }
 

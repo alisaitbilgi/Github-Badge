@@ -3,7 +3,7 @@ import FormContainer from "./HomeContainer";
 import forkImage from "../../public/styles/images/fork.png";
 
 
-class App extends Component {
+export default class App extends Component {
 
   render() {
     return (
@@ -22,4 +22,3 @@ class App extends Component {
   }
 }
 
-export default App;
