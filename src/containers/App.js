@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import FormContainer from "./HomeContainer";
+import HomeContainer from "./HomeContainer";
 import forkImage from "../../public/styles/images/fork.png";
 
 
@@ -9,7 +9,7 @@ export default class App extends Component {
     return (
         <div className="main">
             <article>
-                <FormContainer/>
+                <HomeContainer/>
             </article>
             <nav>
                 <a href={"https://github.com/alisaitbilgi/GithubBadge-React-Redux"}>

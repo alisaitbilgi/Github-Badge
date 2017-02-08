@@ -7,7 +7,7 @@ import ProfilePresenter from "./components/ProfilePresenter";
 import {Provider} from "react-redux";
 import {createStore} from "redux";
 import reducers from "./reducers/singleReducer";
-import {Router, Route, IndexRoute, browserHistory} from "react-router";
+import {Router, Route, IndexRoute, Redirect, browserHistory} from "react-router";
 
 ReactDOM.render(
     <Provider store={createStore(reducers)}>
@@ -15,6 +15,7 @@ ReactDOM.render(
             <Route path="/" component={NavigationBar}>
                 <IndexRoute component={App} />
                 <Route path="profile" component={ProfilePresenter} />
+                <Redirect to="/" />
             </Route>
             <Route path="/users(/:userName)" component={BadgeContainer} />
         </Router>
