@@ -44,7 +44,7 @@ export default class BadgePresenter extends Component {
         <div className="column-1">
           <div className="row">
             <a target={"_blank"} href={users.html_url || "https://github.com/404"} >
-              <img src={users.avatar_url || "https://avatars2.githubusercontent.com/u/5779565?v=3&s=88"} alt="avatar" />
+              <img className="badge-image" src={users.avatar_url || "https://avatars2.githubusercontent.com/u/5779565?v=3&s=88"} alt="avatar" />
             </a>
           </div>
           <div className="row">
@@ -56,17 +56,17 @@ export default class BadgePresenter extends Component {
             </div>
           </div>
           <div className="row">
-            <img src={smallImage} alt="git-ninja"/>
+            <img className="badge-image" src={smallImage} alt="git-ninja"/>
           </div>
         </div>
         <div className="column-5">
           <div className="row">
-            <a target={"_blank"} href={users.html_url || "https://github.com/404"}>
+            <a className="link-tag" target={"_blank"} href={users.html_url || "https://github.com/404"}>
               {users.login || users.message }
             </a>
           </div>
           <div className="row">
-              <p>
+              <p className="last-activity">
                 {repos ? repos.name : "no recent repo activity"} {repos ? "(" + repos.language + ")" : ""}
               </p>
           </div>

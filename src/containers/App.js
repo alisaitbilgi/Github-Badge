@@ -10,7 +10,7 @@ export default class App extends Component {
         <div className="main">
             <div className="sidebar">
               <a href={"https://github.com/alisaitbilgi/GithubBadge-React-Redux"}>
-                <img alt="fork-me" src={forkImage} />
+                <img className="fork-image" alt="fork-me" src={forkImage} />
               </a>
             </div>
             <div className="article">

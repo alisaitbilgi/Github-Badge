@@ -15,14 +15,14 @@ export default class ContentContainer extends Component {
       <div className="content-container">
         <div className="badge-side">
           <div className="row">
-            <img src={socialCoding} alt="social_coding" />
+            <img className="social-coding-image" src={socialCoding} alt="social_coding" />
           </div>
           <div className="row">
             <iframe src={path} className="content" scrolling="no" />
           </div>
         </div>
           <div className="image-side">
-            <img src={gitBeer} alt="octopus" />
+            <img className="octopus-image" src={gitBeer} alt="octopus" />
           </div>
       </div>
     );

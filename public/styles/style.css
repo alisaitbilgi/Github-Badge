@@ -6,7 +6,6 @@ body {
 
 footer {
     text-align: center;
-    width: 100%;
 }
 
 .main {
@@ -21,15 +20,17 @@ footer {
     flex: 9;
     display: flex;
     flex-flow: column;
+    max-width: 1400px;
 }
 
 .sidebar {
     flex: 2;
     min-width: 125px;
     max-width: 250px;
+    padding: 2px;
 }
 
-.sidebar > a > img {
+.fork-image {
     max-height: 145px;
     max-width: 145px;
 }
@@ -54,7 +55,7 @@ footer {
     min-width: 260px;
 }
 
-.badge-side > .row > img {
+.social-coding-image {
     min-height: 140px;
     max-width: 195px;
 }
@@ -74,9 +75,9 @@ footer {
     min-height: 350px;
 }
 
-.image-side > img {
-    min-height: 352px;
-    min-width: 312px;
+.octopus-image {
+    max-height: 352px;
+    max-width: 312px;
 }
 
 .form-container {
@@ -165,7 +166,7 @@ footer {
         min-width: 0;
     }
 
-    .sidebar > a > img {
+    .fork-image{
         max-height: 75px;
         max-width: 75px;
     }
@@ -204,7 +205,7 @@ footer {
         max-height: 160px;
     }
 
-    .badge-side > .row > img {
+    .social-coding-image {
         min-height: 90px;
         max-width: 125px;
         padding-left: 150px;
@@ -218,9 +219,9 @@ footer {
         align-items: flex-end;
     }
 
-    .image-side > img {
-        min-width: 150px;
-        min-height: 170px;
+    .octopus-image {
+        max-width: 150px;
+        max-height: 170px;
     }
 
 
@@ -229,7 +230,7 @@ footer {
         min-width: 42px;
     }
 
-    .column-1 > .row > a > img{
+    .badge-image{
         max-width: 42px;
         min-width: 42px;
     }
@@ -243,7 +244,7 @@ footer {
         max-width: 40px;
         min-width: 40px;
     }
-    img {
+    .badge-image {
         max-width: 35px;
         min-width: 35px;
     }
@@ -268,19 +269,20 @@ footer {
     }
 }
 
-img {
+.badge-image {
     max-height: 47px;
     max-width: 45px;
     border-radius: 7px;
 }
 
-a {
+.link-tag {
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     font-size: 1rem;
+    padding: 2px;
     color:#4c68d7;
 }
 
-p {
+.last-activity {
     font-family: "Times New Roman", sans-serif;
     font-size: 0.9rem;
     color: black;
