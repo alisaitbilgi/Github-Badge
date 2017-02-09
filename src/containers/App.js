@@ -8,15 +8,15 @@ export default class App extends Component {
   render() {
     return (
         <div className="main">
-            <article>
+            <div className="sidebar">
+              <a href={"https://github.com/alisaitbilgi/GithubBadge-React-Redux"}>
+                <img alt="fork-me" src={forkImage} />
+              </a>
+            </div>
+            <div className="article">
                 <HomeContainer/>
-            </article>
-            <nav>
-                <a href={"https://github.com/alisaitbilgi/GithubBadge-React-Redux"}>
-                    <img className="forkImage" alt="fork-me" src={forkImage} />
-                </a>
-            </nav>
-            <aside />
+            </div>
+            <div className="sidebar"></div>
         </div>
     );
   }

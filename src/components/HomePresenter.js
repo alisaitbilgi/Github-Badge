@@ -1,4 +1,7 @@
 import React, {Component} from "react";
+import socialCoding from "../../public/styles/images/social.png";
+import gitBeer from "../../public/styles/images/octopus.png";
+
 
 export default class ContentContainer extends Component {
   render() {
@@ -9,7 +12,19 @@ export default class ContentContainer extends Component {
       path = "/users";
     }
     return (
-        <iframe src={path} className="content" scrolling="no" />
+      <div className="content-container">
+        <div className="badge-side">
+          <div className="row">
+            <img src={socialCoding} alt="social_coding" />
+          </div>
+          <div className="row">
+            <iframe src={path} className="content" scrolling="no" />
+          </div>
+        </div>
+          <div className="image-side">
+            <img src={gitBeer} alt="octopus" />
+          </div>
+      </div>
     );
   }
 }

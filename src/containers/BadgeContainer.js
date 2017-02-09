@@ -38,7 +38,7 @@ export class BadgeContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    responseObject: state.get("responseObject", I.Map())
+    responseObject: state.get("responseObject", I.List())
   };
 }
 

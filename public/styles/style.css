@@ -1,122 +1,96 @@
 body {
     background: radial-gradient(aliceblue 13%, linen 80%);
-    height: 970px;
     margin: 0;
     padding: 0;
-    max-width: 1300px;
-    max-height: 1200px;
 }
 
-footer{
+footer {
     text-align: center;
-    min-height: 40px;
+    width: 100%;
 }
 
 .main {
-    min-height: 800px;
     margin: 0;
     padding: 0;
     display: flex;
     flex-flow: row;
-    background-image: url(images/octopus.png);
-    background-repeat: no-repeat;
-    background-position: 75% 18%;
-    background-size: 275px 305px;
+    height: 100vh;
 }
 
-.main > article {
-    flex: 3 1 50%;
-    order: 2;
-    background-image: url(images/download.png);
-    background-repeat: no-repeat;
-    background-position: 10% 5%;
-    background-size: 210px 150px;
+.article {
+    flex: 9;
+    display: flex;
+    flex-flow: column;
 }
 
-.main > nav {
-    flex: 1 6 10%;
-    order: 1;
-    max-width: 10%;
+.sidebar {
+    flex: 2;
+    min-width: 125px;
+    max-width: 250px;
 }
 
-.forkImage {
-    min-width: 160px;
-    min-height: 160px;
+.sidebar > a > img {
+    max-height: 145px;
+    max-width: 145px;
 }
 
-.main > aside {
-    flex: 1 6 40%;
-    order: 2;
-    max-width: 40%;
+.content-container {
+    display: flex;
+    flex-flow: row;
+    min-height: 490px;
+}
+
+.badge-side {
+    min-width: 350px;
+    flex: 1;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding-bottom: 50px;
+}
+
+.badge-side > .row {
+    min-height: 220px;
+    min-width: 260px;
+}
+
+.badge-side > .row > img {
+    min-height: 140px;
+    max-width: 195px;
 }
 
 .content {
-    width: 262px;
-    height: 155px;
-    padding: 220px 90% 0 10%;
-    display: flex;
-    flex-flow: row;
+    width: 260px;
+    height: 150px;
     border:none;
 }
 
-.styleOfIframe {
-    width: 260px;
-    height: 146px;
-    border: 1px solid lightgrey;
+.image-side {
+    min-width: 350px;
+    flex: 1;
     display: flex;
-    flex-flow: row;
-    border-radius: 10px;
-    background: radial-gradient(aliceblue 88%, ghostwhite 12%);
+    justify-content: center;
+    align-items: center;
+    min-height: 350px;
 }
 
-.col1 {
+.image-side > img {
+    min-height: 352px;
+    min-width: 312px;
+}
+
+.form-container {
     display: flex;
-    flex-direction:column;
-    justify-content:stretch;
-    font-size: 12px;
-}
-
-.col2 {
-    display:flex;
-    flex-direction:column;
-    justify-content:stretch;
-    font-size: 12px;
-}
-
-.row_of_col1 {
-    display:block;
-    flex-grow:1;
-    width:55px;
-    max-height: 46px;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 12px;
-    line-height: 56px;
-    padding: 1px;
-}
-
-.row_of_col2 {
-    display:block;
-    flex-grow:1;
-    width:200px;
-    max-height: 35px;
-    color: #4c4a37;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 13px;
-    line-height: 32px;
-}
-
-.formContainerDiv {
-    width: 550px;
-    max-height: 90px;
-    min-height: 50px;
-    display: flex;
-    padding: 12% 20% 12% 20%;
+    justify-content: center;
     border-radius: 22px;
+    min-height: 380px;
 }
 
 .inputStyle {
     text-align: center;
-    width: 100%;
+    width: 70%;
+    max-height: 46px;
+    max-width: 600px;
     border:1px solid #B5B5B5;
     border-radius: 10px;
     font-size: 22px;
@@ -126,159 +100,188 @@ footer{
 }
 
 .inputStyle:focus {
-    background-color: #E8E8E8;
     border: 2px solid #B5B5B5;
-    text-decoration: none;
-    outline: none;
 }
 
-.leftOnes {
-    float: left;
-    padding-left: 10px;
+.row {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    flex-basis: 50%;
 }
 
-.rightOnes {
-    float: right;
-    padding-right: 20px;
+.column-1 {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
-.topOnes {
-    padding-left: 4px;
-    vertical-align: text-bottom;
-    font-size: 13px;
+.column-5 {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 5;
+    flex-basis: 50%;
 }
 
-.centered {
-    margin: 0 auto;
-    padding-top: 20%;
-    font-size: 20px;
+.styleOfIframe {
+    border-radius: 10px;
+    background: radial-gradient(aliceblue 88%, ghostwhite 12%);
+    width: 255px;
+    height: 141px;
+    border: 1px solid lightgrey;
+
+    padding: 0;
+    display: flex;
+    flex-direction: row;
 }
 
-
-@media (max-width: 850px) {
-    .main > nav {
-        max-width: 0;
-    }
-
-    .main > aside {
-        max-width: 0;
-    }
+.svg-wrapper {
+    width: 100%;
+    max-height: 47px;
+    max-width: 45px;
 }
 
-@media (max-width: 768px) {
+.bold-item {
+    font-weight: 900;
+    font-size: 1.1rem;
+    color: black;
+}
+
+.text-item {
+    font-family: "Times New Roman", sans-serif;
+    font-size: 0.9rem;
+    color: slategrey;
+}
+
+@media only screen and (max-device-width: 768px) {
 
     .main {
-        background-size: 240px 265px;
-        background-position: 80% 30%;
+        min-width: 360px;
+        min-height: 600px;
+        max-height: 600px;
     }
 
-    .main > article {
-        background-position: 10% 10%;
-        margin: 0;
+    .sidebar {
+        min-width: 0;
+    }
+
+    .sidebar > a > img {
+        max-height: 75px;
+        max-width: 75px;
+    }
+
+    .article {
+        min-width: 360px;
+    }
+
+    .content-container {
+        padding-top: 30px;
+        min-height: 320px;
+        max-height: 320px;
+    }
+
+    .badge-side {
+        min-width: 210px;
+        max-width: 210px;
         padding: 0;
     }
 
-    .main > nav {
-        margin: 0;
-        padding: 0;
-        max-width: 0;
+    .badge-side > .row {
+        min-width: 180px;
+        min-height: 160px;
+        padding-top: 6px;
+        justify-content: flex-end;
     }
 
-    .main > aside {
-        margin: 0;
-        padding: 0;
-        max-width: 0;
+    .styleOfIframe {
+        max-width: 205px;
+        min-width: 205px;
+        max-height: 150px;
     }
 
     .content {
-        padding-top: 260px;
+        max-width: 210px;
+        max-height: 160px;
     }
 
-    .formContainerDiv {
-        width: 60%;
-        padding: 10% 20% 5% 20%;
+    .badge-side > .row > img {
+        min-height: 90px;
+        max-width: 125px;
+        padding-left: 150px;
     }
 
-}
-
-@media (max-width: 690px){
-
-    .main {
-        background-size: 180px 205px;
-        background-position: 90% 35%;
+    .image-side {
+        min-width: 150px;
+        max-width: 150px;
+        min-height: 320px;
+        max-height: 320px;
+        align-items: flex-end;
     }
 
-    .main > article {
-        background-position: 10% 5%;
-        padding: 0;
+    .image-side > img {
+        min-width: 150px;
+        min-height: 170px;
     }
 
-    .formContainerDiv {
-        width: 70%;
-        padding: 14% 15% 5% 15%;
+
+    .column-1 {
+        max-width: 42px;
+        min-width: 42px;
     }
 
-}
-
-@media (max-width: 570px){
-
-    .main {
-        background-image: none;
+    .column-1 > .row > a > img{
+        max-width: 42px;
+        min-width: 42px;
     }
 
-    .main > article {
-        background-position: 46% 10%;
-        background-size: 180px 120px;
+    .column-1 > .row {
+        max-width: 35px;
+        min-width: 35px;
     }
 
-    .forkImage {
-        min-width: 110px;
-        min-height: 110px;
+    .svg-wrapper {
+        max-width: 40px;
+        min-width: 40px;
     }
-    .content {
-        padding-left: 15%;
+    img {
+        max-width: 35px;
+        min-width: 35px;
+    }
+
+    .bold-item {
+        font-size: 0.9rem;
+    }
+
+    .text-item {
+        font-size: 0.7rem;
+    }
+
+    .form-container {
+        min-height: 250px;
+        max-height: 250px;
+        align-items: center;
     }
 
     .inputStyle {
-        font-size: 17px;
+        width: 85%;
+        height: 60px;
     }
 }
 
-span {
-    color: #323231;
-    font-family: "Source Sans Pro", sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 32px;
-}
-
 img {
-    max-height: 50px;
-    max-width: 50px;
+    max-height: 47px;
+    max-width: 45px;
     border-radius: 7px;
 }
 
-b {
-    color: black;
-    font-size: 14px;
-    padding-right: 2px;
-}
-
 a {
-    font-size: 15px;
-    text-decoration: none;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1rem;
     color:#4c68d7;
 }
 
-a:hover {
-    text-decoration: underline;
-}
-
-svg {
-    max-height: 53px;
-    max-width: 49px;
-}
-
 p {
-    font-size: 8px;
+    font-family: "Times New Roman", sans-serif;
+    font-size: 0.9rem;
+    color: black;
 }

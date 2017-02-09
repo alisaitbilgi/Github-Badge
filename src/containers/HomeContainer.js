@@ -27,9 +27,9 @@ export class HomeContainer extends Component {
 
   render() {
     return (
-        <div>
+        <div className="article">
             <HomePresenter takeUserName={this.props.username} />
-            <div className="formContainerDiv">
+            <div className="form-container">
                 <input
                     className="inputStyle"
                     onKeyUp={this.handleSubmit}
