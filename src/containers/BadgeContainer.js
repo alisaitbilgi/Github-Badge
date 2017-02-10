@@ -12,7 +12,7 @@ function mainApi(input = "nzakas") {
     users: `https://api.github.com/users/${input}`
   };
 
-  return Promise.all([Request.get(url.repos), Request.get(url.users)]);
+  return new Promise(res => setTimeout(res, 250)).then(() => Promise.all([Request.get(url.repos), Request.get(url.users)]));
 }
 
 export class BadgeContainer extends Component {
