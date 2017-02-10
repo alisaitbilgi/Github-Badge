@@ -3,6 +3,7 @@ import {debounce} from "throttle-debounce";
 import {connect} from "react-redux";
 import {setUserName} from "../actions/setUserName";
 import HomePresenter from "../components/HomePresenter";
+import {bindActionCreators} from 'redux';
 
 
 export class HomeContainer extends Component {
@@ -22,7 +23,7 @@ export class HomeContainer extends Component {
   }
 
   callSubmit(input) {
-    this.props.dispatch(setUserName(input));
+    this.props.setUsername(input);
   }
 
   render() {
@@ -48,4 +49,10 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(HomeContainer);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    setUsername: setUserName
+  }, dispatch);
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(HomeContainer);
