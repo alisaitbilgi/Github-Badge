@@ -76,8 +76,10 @@ footer {
 }
 
 .octopus-image {
-    max-height: 352px;
-    max-width: 312px;
+    max-height: 376px;
+    min-height: 376px;
+    max-width: 332px;
+    min-width: 332px;
 }
 
 .form-container {
@@ -222,6 +224,8 @@ footer {
     .octopus-image {
         max-width: 150px;
         max-height: 170px;
+        min-width: 150px;
+        min-height: 170px;
     }
 
 

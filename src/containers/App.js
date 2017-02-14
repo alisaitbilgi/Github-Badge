@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import HomeContainer from "./HomeContainer";
+import Home from "./Home";
 import forkImage from "../../public/styles/images/fork.png";
 
 
@@ -14,7 +14,7 @@ export default class App extends Component {
               </a>
             </div>
             <div className="article">
-                <HomeContainer/>
+                <Home/>
             </div>
             <div className="sidebar"></div>
         </div>

@@ -12,13 +12,13 @@ function mainApi(input = "nzakas") {
     users: `https://api.github.com/users/${input}`
   };
 
-  return new Promise(res => setTimeout(res, 250)).then(() => Promise.all([Request.get(url.repos), Request.get(url.users)]));
+  return Promise.all([Request.get(url.repos), Request.get(url.users)]);
 }
 
 export class BadgeContainer extends Component {
 
   componentWillMount() {
-    mainApi(this.props.params.userName)
+    mainApi(this.props.params.username)
       .then(res => {
         this.props.dispatch(setResponse(res));
       })
@@ -27,7 +27,10 @@ export class BadgeContainer extends Component {
       });
   }
 
+
+
   render() {
+
     return (
         <div>
             <BadgePresenter responseData={this.props.responseObject} />
@@ -38,6 +41,7 @@ export class BadgeContainer extends Component {
 
 function mapStateToProps(state) {
   return {
+    tempUsername: state.get("tempUsername", ""),
     responseObject: state.get("responseObject", I.List())
   };
 }
