@@ -21,6 +21,7 @@
     "karma-phantomjs-launcher": "^1.0.2",
     "karma-requirejs": "^1.1.0",
     "karma-safari-launcher": "^1.0.0",
+    "lodash.debounce": "^4.0.8",
     "mocha": "^3.2.0",
     "react-scripts": "0.8.2",
     "react-sparkline": "^2.0.0",
@@ -31,6 +32,7 @@
   "dependencies": {
     "history": "^4.5.1",
     "immutable": "^3.8.1",
+    "lodash.debounce": "^4.0.8",
     "react": "^15.4.2",
     "react-debounce-input": "^2.4.2",
     "react-dom": "^15.4.1",

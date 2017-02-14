@@ -1,25 +1,41 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {setUserName} from "../actions/setUserName";
+import {setTempUserName} from "../actions/setTempUserName";
 import socialCoding from "../../public/styles/images/social.png";
 import gitBeer from "../../public/styles/images/octopus.png";
 import {bindActionCreators} from 'redux';
 
+import debounce from "lodash.debounce";
+
 
 export class Home extends Component {
 
+  constructor(props) {
+    super(props);
+    this.onUserChange = this.onUserChange.bind(this);
+    this.onAssignTempUserName = debounce(this.onAssignTempUserName.bind(this), 600);
+  }
+
+  onAssignTempUserName(username) {
+    this.props.assignTempUsername(username);
+  }
+
   onUserChange(evt) {
-    this.props.onUserChange(evt.target.value);
+    this.props.userChange(evt.target.value);
   }
 
   render() {
 
     let path;
-    if (this.props.username) {
-      path = `/users/${this.props.username}`;
+    if (this.props.tempUsername) {
+      console.log(this.props.tempUsername);
+      path = `/users/${this.props.tempUsername}`;
     } else {
       path = "/users";
     }
+
+    this.onAssignTempUserName(this.props.username);
 
     return (
         <div className="article">
@@ -40,7 +56,7 @@ export class Home extends Component {
               <input
                   value={this.props.username}
                   className="inputStyle"
-                  onChange={this.onUserChange.bind(this)}
+                  onChange={this.onUserChange}
                   placeholder="Type your GitHub username"
               />
           </div>
@@ -52,13 +68,15 @@ export class Home extends Component {
 
 function mapStateToProps(state) {
   return {
-    username: state.get("username", "")
+    username: state.get("username", ""),
+    tempUsername: state.get("tempUsername", "")
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    onUserChange: setUserName
+    userChange: setUserName,
+    assignTempUsername: setTempUserName
   }, dispatch);
 }
 
