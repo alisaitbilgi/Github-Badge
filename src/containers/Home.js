@@ -6,7 +6,6 @@ import socialCoding from "../../public/styles/images/social.png";
 import gitBeer from "../../public/styles/images/octopus.png";
 import {bindActionCreators} from 'redux';
 
-import debounce from "lodash.debounce";
 
 
 export class Home extends Component {
@@ -14,7 +13,7 @@ export class Home extends Component {
   constructor(props) {
     super(props);
     this.onUserChange = this.onUserChange.bind(this);
-    this.onAssignTempUserName = debounce(this.onAssignTempUserName.bind(this), 600);
+    this.onAssignTempUserName = this.onAssignTempUserName.bind(this);
   }
 
   onAssignTempUserName(username) {
@@ -29,7 +28,6 @@ export class Home extends Component {
 
     let path;
     if (this.props.tempUsername) {
-      console.log(this.props.tempUsername);
       path = `/users/${this.props.tempUsername}`;
     } else {
       path = "/users";

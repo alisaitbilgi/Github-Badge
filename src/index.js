@@ -5,12 +5,13 @@ import NavigationBar from "./containers/NavigationBar";
 import BadgeContainer from "./containers/BadgeContainer";
 import ProfilePresenter from "./components/ProfilePresenter";
 import {Provider} from "react-redux";
-import {createStore} from "redux";
-import reducers from "./reducers/singleReducer";
 import {Router, Route, IndexRoute, browserHistory} from "react-router";
+import configStore from './store/configStore';
+
+const store = configStore();
 
 ReactDOM.render(
-    <Provider store={createStore(reducers)}>
+    <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={NavigationBar}>
                 <IndexRoute component={App} />

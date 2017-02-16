@@ -27,16 +27,14 @@ export class BadgeContainer extends Component {
       });
   }
 
-
-
   render() {
-
     return (
         <div>
             <BadgePresenter responseData={this.props.responseObject} />
         </div>
     );
   }
+
 }
 
 function mapStateToProps(state) {
