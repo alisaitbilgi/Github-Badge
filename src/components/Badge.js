@@ -34,6 +34,7 @@ export class Badge extends Component {
 
       repos = this.props.badgeRepoInfo[0];
       users = this.props.badgeUserInfo;
+
     } else {
       repos = [{}];
       users = {
