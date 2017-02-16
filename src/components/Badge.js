@@ -8,7 +8,6 @@ import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
 let repos;
 let users;
 let values = [];
-let responseArray = [];
 let length = 0;
 let lastWeek = new Date();
 
@@ -20,22 +19,21 @@ export class Badge extends Component {
 
   render() {
 
-    if (!I.List.isList(this.props.responseObject)) {
+    if (!I.List.isList(this.props.badgeRepoInfo) && !I.List.isList(this.props.badgeUserInfo)) {
 
-      responseArray = JSON.parse(this.props.responseObject[0]);
-      length = responseArray.length;
+      length = this.props.badgeRepoInfo.length;
       lastWeek.setDate((lastWeek.getDate()) - 7);
 
-      for(let i = 0; i < length; i++) {
-        if(new Date(responseArray[i].updated_at).getTime() > lastWeek.getTime()) {
-          values.push (responseArray[i].size);
+      for (let i = 0; i < length; i++) {
+        if (new Date(this.props.badgeRepoInfo.updated_at).getTime() > lastWeek.getTime()) {
+          values.push(this.props.badgeRepoInfo[0].size);
         } else {
           values.push(0);
         }
       }
 
-      repos = responseArray[0];
-      users = JSON.parse(this.props.responseObject[1]);
+      repos = this.props.badgeRepoInfo[0];
+      users = this.props.badgeUserInfo;
 
     } else {
       repos = [{}];
@@ -118,7 +116,8 @@ export class Badge extends Component {
 
 function mapStateToProps(state) {
   return {
-    responseObject: state.get("responseObject", I.List())
+    badgeUserInfo: state.get("badgeUserInfo", I.List()),
+    badgeRepoInfo: state.get("badgeRepoInfo", I.List())
   };
 }
 

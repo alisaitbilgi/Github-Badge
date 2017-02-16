@@ -1,6 +1,4 @@
-
 import {Request} from "genericxhr/Request";
-
 
 export const setResponse = (username = "nzakas") => {
 
@@ -11,17 +9,26 @@ export const setResponse = (username = "nzakas") => {
     };
     Promise.all([Request.get(url.repos), Request.get(url.users)])
       .then(res => {
-        dispatch(set(res));
+        dispatch(setRepoInfo(JSON.parse(res[0])));
+        dispatch(setUsersInfo(JSON.parse(res[1])));
       })
       .catch(rej => {
-        dispatch(set(rej));
+        dispatch(setUsersInfo(rej));
       });
   }
 };
 
-function set(data) {
+function setUsersInfo(data) {
   return {
-    type: "SET_RESPONSE_OBJECT",
+    type: "SET_USER_INFO",
+    data
+  };
+}
+
+
+function setRepoInfo(data) {
+  return {
+    type: "SET_REPO_INFO",
     data
   };
 }
