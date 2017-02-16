@@ -13,13 +13,11 @@ let lastWeek = new Date();
 
 export class Badge extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.dispatch(setResponse(this.props.params.username));
   }
 
   render() {
-
-    if (!I.List.isList(this.props.badgeRepoInfo) && !I.List.isList(this.props.badgeUserInfo)) {
 
       length = this.props.badgeRepoInfo.length;
       lastWeek.setDate((lastWeek.getDate()) - 7);
@@ -35,12 +33,6 @@ export class Badge extends Component {
       repos = this.props.badgeRepoInfo[0];
       users = this.props.badgeUserInfo;
 
-    } else {
-      repos = [{}];
-      users = {
-        message: ""
-      };
-    }
 
     return (
         <div>
