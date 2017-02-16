@@ -25,8 +25,8 @@ export class Badge extends Component {
       lastWeek.setDate((lastWeek.getDate()) - 7);
 
       for (let i = 0; i < length; i++) {
-        if (new Date(this.props.badgeRepoInfo.updated_at).getTime() > lastWeek.getTime()) {
-          values.push(this.props.badgeRepoInfo[0].size);
+        if (new Date(this.props.badgeRepoInfo[i].updated_at).getTime() > lastWeek.getTime()) {
+          values.push(this.props.badgeRepoInfo[i].size);
         } else {
           values.push(0);
         }
@@ -34,7 +34,6 @@ export class Badge extends Component {
 
       repos = this.props.badgeRepoInfo[0];
       users = this.props.badgeUserInfo;
-
     } else {
       repos = [{}];
       users = {

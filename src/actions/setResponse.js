@@ -9,11 +9,12 @@ export const setResponse = (username = "nzakas") => {
     };
     Promise.all([Request.get(url.repos), Request.get(url.users)])
       .then(res => {
-        dispatch(setRepoInfo(JSON.parse(res[0])));
+        dispatch(setReposInfo(JSON.parse(res[0])));
         dispatch(setUsersInfo(JSON.parse(res[1])));
       })
       .catch(rej => {
         dispatch(setUsersInfo(rej));
+        dispatch(setReposInfo(rej));
       });
   }
 };
@@ -26,7 +27,7 @@ function setUsersInfo(data) {
 }
 
 
-function setRepoInfo(data) {
+function setReposInfo(data) {
   return {
     type: "SET_REPO_INFO",
     data
