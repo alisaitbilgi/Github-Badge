@@ -1,11 +1,9 @@
 
 import debounce from "lodash.debounce";
 
-const x = (input, dispatch) => {
+const debounced = debounce((input, dispatch) => {
   dispatch(setUserName(input));
-};
-
-const debounced = debounce(x, 1000);
+}, 500);
 
 function setUserName(input) {
   return {

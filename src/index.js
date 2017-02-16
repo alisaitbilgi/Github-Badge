@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./containers/App";
-import NavigationBar from "./containers/NavigationBar";
-import BadgeContainer from "./containers/BadgeContainer";
-import ProfilePresenter from "./components/ProfilePresenter";
+import App from "./components/App";
+import NavigationBar from "./components/NavigationBar";
+import Badge from "./components/Badge";
+import Profile from "./components/Profile";
 import {Provider} from "react-redux";
 import {Router, Route, IndexRoute, browserHistory} from "react-router";
 import configStore from './store/configStore';
@@ -15,9 +15,9 @@ ReactDOM.render(
         <Router history={browserHistory}>
             <Route path="/" component={NavigationBar}>
                 <IndexRoute component={App} />
-                <Route path="profile" component={ProfilePresenter} />
+                <Route path="profile" component={Profile} />
             </Route>
-            <Route path="users(/:username)" component={BadgeContainer} />
+            <Route path="users(/:username)" component={Badge} />
         </Router>
     </Provider>
   , document.getElementById("root")
