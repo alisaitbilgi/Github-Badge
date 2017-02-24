@@ -5,10 +5,6 @@
   "devDependencies": {
     "eslint": "^3.15.0",
     "genericxhr": "^1.0.0",
-    "jasmine-core": "^2.5.2",
-    "karma": "^1.4.1",
-    "karma-chrome-launcher": "^2.0.0",
-    "karma-jasmine": "^1.1.0",
     "lodash.debounce": "^4.0.8",
     "react-scripts": "0.8.2",
     "react-sparklines": "^1.6.0",
@@ -25,7 +21,6 @@
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
-    "test": "mocha",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject"

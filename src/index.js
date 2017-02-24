@@ -7,8 +7,9 @@ import Profile from "./components/Profile";
 import {Provider} from "react-redux";
 import {Router, Route, IndexRoute, browserHistory} from "react-router";
 import configStore from './store/configStore';
+import {routeCallback} from "./routeCallback";
 
-const store = configStore();
+export let store = configStore();
 
 ReactDOM.render(
     <Provider store={store}>
@@ -17,7 +18,7 @@ ReactDOM.render(
                 <IndexRoute component={App} />
                 <Route path="profile" component={Profile} />
             </Route>
-            <Route path="users(/:username)" component={Badge} />
+            <Route path="users(/:username)" onEnter={routeCallback} component={Badge} />
         </Router>
     </Provider>
   , document.getElementById("root")

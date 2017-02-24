@@ -1,12 +1,14 @@
 import {Request} from "genericxhr/Request";
 
 export const setResponse = (username = "nzakas") => {
-
   return (dispatch) => {
+    
     let url = {
       repos: `https://api.github.com/users/${username}/repos`,
       users: `https://api.github.com/users/${username}`
     };
+
+
     Promise.all([Request.get(url.repos), Request.get(url.users)])
       .then(res => {
         dispatch(setReposInfo(JSON.parse(res[0])));
@@ -17,6 +19,7 @@ export const setResponse = (username = "nzakas") => {
         dispatch(setReposInfo(rej));
       });
   }
+  
 };
 
 function setUsersInfo(data) {

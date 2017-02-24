@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import {connect} from "react-redux";
 import {setUserName} from "../actions/setUserName";
 import {setTempUserName} from "../actions/setTempUserName";
@@ -7,33 +7,17 @@ import gitBeer from "../../public/styles/images/octopus.png";
 import {bindActionCreators} from 'redux';
 
 
+export function Home(props) {
 
-export class Home extends Component {
-
-  constructor(props) {
-    super(props);
-    this.onUserChange = this.onUserChange.bind(this);
-    this.onAssignTempUserName = this.onAssignTempUserName.bind(this);
-  }
-
-  onAssignTempUserName(username) {
-    this.props.assignTempUsername(username);
-  }
-
-  onUserChange(evt) {
-    this.props.userChange(evt.target.value);
-  }
-
-  render() {
-
-    let path;
-    if (this.props.tempUsername) {
-      path = `/users/${this.props.tempUsername}`;
-    } else {
-      path = "/users";
+    function onAssignTempUserName(username) {
+      props.assignTempUsername(username);
     }
 
-    this.onAssignTempUserName(this.props.username);
+    function onUserChange(evt) {
+      props.userChange(evt.target.value);
+    }
+
+    onAssignTempUserName(props.username);
 
     return (
         <div className="article">
@@ -43,7 +27,7 @@ export class Home extends Component {
                 <img className="social-coding-image" src={socialCoding} alt="social_coding" />
               </div>
               <div className="row">
-                <iframe src={path} className="content" scrolling="no" />
+                <iframe src={props.tempUsername ? `/users/${props.tempUsername}` : "/users"} className="content" scrolling="no" />
               </div>
             </div>
             <div className="image-side">
@@ -52,16 +36,14 @@ export class Home extends Component {
           </div>
           <div className="form-container">
               <input
-                  value={this.props.username}
+                  value={props.username}
                   className="inputStyle"
-                  onChange={this.onUserChange}
+                  onChange={onUserChange}
                   placeholder="Type your GitHub username"
               />
           </div>
         </div>
     );
-  }
-
 }
 
 function mapStateToProps(state) {

@@ -13,7 +13,7 @@ footer {
     padding: 0;
     display: flex;
     flex-flow: row;
-    height: 100vh;
+    height: 95vh;
 }
 
 .article {

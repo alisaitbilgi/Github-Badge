@@ -1,12 +1,10 @@
-import React, {Component} from "react";
+import React from "react";
 
-export default class ProfilePresenter extends Component {
-  render() {
+export default function Profile() {
     return (
         <div className="main">
             <a className="centered" href="https://github.com/alisaitbilgi/GithubBadge-React-Redux">Source Code</a>
         </div>
     );
-  }
 }
 
