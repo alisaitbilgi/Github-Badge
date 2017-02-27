@@ -6,7 +6,7 @@ import Badge from "./components/Badge";
 import Profile from "./components/Profile";
 import {Provider} from "react-redux";
 import {Router, Route, IndexRoute, browserHistory} from "react-router";
-import configStore from './store/configStore';
+import configStore from "./store/configStore";
 import {routeCallback} from "./routeCallback";
 
 export let store = configStore();

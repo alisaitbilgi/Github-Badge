@@ -7,14 +7,14 @@ export default function App() {
   return (
       <div className="main">
           <div className="sidebar">
-            <a href={"https://github.com/alisaitbilgi/GithubBadge-React-Redux"}>
-              <img className="fork-image" alt="fork-me" src={forkImage} />
-            </a>
+              <a href={"https://github.com/alisaitbilgi/GithubBadge-React-Redux"}>
+                  <img className="fork-image" alt="fork-me" src={forkImage} />
+              </a>
           </div>
           <div className="article">
               <Home/>
           </div>
-          <div className="sidebar"></div>
+          <div className="sidebar" />
       </div>
   );
 }

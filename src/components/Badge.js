@@ -22,80 +22,79 @@ export let badgeAPI = {
 
 export function Badge(props) {
   const {repos, users, values} = badgeAPI.suitResponse(props.badgeUserInfo, props.badgeRepoInfo);
-
   if (I.List.isList(props.badgeUserInfo) || I.List.isList(props.badgeRepoInfo)) {
     return <div />;
   }
   return (
-    <div>
-      <div className="styleOfIframe">
-        <div className="column-1">
-          <div className="row">
-            <a target={"_blank"} href={users.html_url || "https://github.com/404"} >
-              <img className="badge-image"
-                   src={users.avatar_url || "https://avatars2.githubusercontent.com/u/5779565?v=3&s=88"}
-                   alt="avatar"
-              />
-            </a>
-          </div>
-          <div className="row">
-            <div className="svg-wrapper">
-              <Sparklines data={values} margin={6}>
-                <SparklinesLine style={{strokeWidth: 10, stroke: "#2c3cff", fill: "aliceblue"}} />
-                <SparklinesSpots size={4} style={{stroke: "#336aff", strokeWidth: 3, fill: "white"}} />
-              </Sparklines>
-            </div>
-          </div>
-          <div className="row">
-            <img className="badge-image" src={smallImage} alt="git-ninja"/>
-          </div>
-        </div>
-        <div className="column-5">
-          <div className="row">
-            <a className="link-tag" target={"_blank"} href={users.html_url || "https://github.com/404"}>
-              {users.login || users.message }
-            </a>
-          </div>
-          <div className="row">
-            <p className="last-activity">
-              {repos ? repos.name : "no recent repo activity"} {repos ? "(" + repos.language + ")" : ""}
-            </p>
-          </div>
-          <div className="row">
-            <div className="column-5">
-              <div className="text-item">
+      <div>
+          <div className="styleOfIframe">
+              <div className="column-1">
+                  <div className="row">
+                      <a target={"_blank"} href={users.html_url || "https://github.com/404"} >
+                          <img className="badge-image"
+                              src={users.avatar_url || "https://avatars2.githubusercontent.com/u/5779565?v=3&s=88"}
+                              alt="avatar"
+                          />
+                      </a>
+                  </div>
+                  <div className="row">
+                      <div className="svg-wrapper">
+                          <Sparklines data={values} margin={6}>
+                              <SparklinesLine style={{strokeWidth: 10, stroke: "#2c3cff", fill: "aliceblue"}} />
+                              <SparklinesSpots size={4} style={{stroke: "#336aff", strokeWidth: 3, fill: "white"}} />
+                          </Sparklines>
+                      </div>
+                  </div>
+                  <div className="row">
+                      <img className="badge-image" src={smallImage} alt="git-ninja"/>
+                  </div>
+              </div>
+              <div className="column-5">
+                  <div className="row">
+                      <a className="link-tag" target={"_blank"} href={users.html_url || "https://github.com/404"}>
+                          {users.login || users.message }
+                      </a>
+                  </div>
+                  <div className="row">
+                      <p className="last-activity">
+                          {repos ? repos.name : "no recent repo activity"} {repos ? "(" + repos.language + ")" : ""}
+                      </p>
+                  </div>
+                  <div className="row">
+                      <div className="column-5">
+                          <div className="text-item">
                               <span className="bold-item">
                                   {users.followers > 1000 ? Math.floor(users.followers / 1000, -1) + "k" : users.followers || 0}
                               </span> followers
-              </div>
-            </div>
-            <div className="column-5">
-              <div className="text-item">
+                          </div>
+                      </div>
+                      <div className="column-5">
+                          <div className="text-item">
                               <span className="bold-item">
                                   {users.public_repos || 0}
                               </span> repos
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="column-5">
-              <div className="text-item">
+                          </div>
+                      </div>
+                  </div>
+                  <div className="row">
+                      <div className="column-5">
+                          <div className="text-item">
                               <span className="bold-item">
                                   {repos ? repos.forks_count : 0}
                               </span> forks
-              </div>
-            </div>
-            <div className="column-5">
-              <div className="text-item">
+                          </div>
+                      </div>
+                      <div className="column-5">
+                          <div className="text-item">
                               <span className="bold-item">
                                   {repos ? repos.stargazers_count : 0}
                               </span> stargazers
+                          </div>
+                      </div>
+                  </div>
               </div>
-            </div>
           </div>
-        </div>
       </div>
-    </div>
   );
 }
 

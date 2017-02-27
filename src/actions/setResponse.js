@@ -18,7 +18,7 @@ export const setResponse = (username = "nzakas") => {
         dispatch(setUsersInfo(rej));
         dispatch(setReposInfo(rej));
       });
-  }
+  };
   
 };
 
