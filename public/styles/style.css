@@ -8,12 +8,16 @@ footer {
     text-align: center;
 }
 
+.centered {
+    padding-left: 25%;
+}
+
 .main {
     margin: 0;
     padding: 0;
     display: flex;
     flex-flow: row;
-    height: 95vh;
+    height: 100vh;
 }
 
 .article {

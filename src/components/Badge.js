@@ -3,15 +3,22 @@ import {connect} from "react-redux";
 import I from "immutable";
 import smallImage from "../../public/styles/images/small.png";
 import {Sparklines, SparklinesLine, SparklinesSpots} from "react-sparklines";
+import loading from "../../public/styles/images/loading.svg";
 
 export let badgeAPI = {
   suitResponse: (userInfo, repoInfo) => {
-    let values = [];
+    if (repoInfo.constructor !== Array) {
+      return {
+        repos: repoInfo,
+        users: userInfo,
+        values: []
+      };
+    }
     let lastWeek = new Date();
     lastWeek.setDate((lastWeek.getDate()) - 7);
-    for (let i = 0; i < repoInfo.length; i++) {
-      new Date(repoInfo[i].updated_at).getTime() > lastWeek.getTime() ? values.push(repoInfo[i].size) : values.push(0);
-    }
+    const values = repoInfo.map(
+      repo => Date.parse(repo.updated_at) > lastWeek.getTime() ? repo.size : 0
+    );
     return {
       repos: repoInfo[0],
       users: userInfo,
@@ -20,10 +27,14 @@ export let badgeAPI = {
   }
 };
 
-export function Badge(props) {
-  const {repos, users, values} = badgeAPI.suitResponse(props.badgeUserInfo, props.badgeRepoInfo);
-  if (I.List.isList(props.badgeUserInfo) || I.List.isList(props.badgeRepoInfo)) {
-    return <div />;
+export function Badge({badgeUserInfo, badgeRepoInfo}) {
+  const {repos, users, values} = badgeAPI.suitResponse(badgeUserInfo, badgeRepoInfo);
+  if (I.List.isList(badgeUserInfo) || I.List.isList(badgeRepoInfo)) {
+    return (
+        <div className="styleOfIframe">
+            <img className="centered" src={loading} alt="loading..."/>
+        </div>
+    );
   }
   return (
       <div>
@@ -80,14 +91,14 @@ export function Badge(props) {
                       <div className="column-5">
                           <div className="text-item">
                               <span className="bold-item">
-                                  {repos ? repos.forks_count : 0}
+                                  {repos && repos.forks_count ? repos.forks_count : 0}
                               </span> forks
                           </div>
                       </div>
                       <div className="column-5">
                           <div className="text-item">
                               <span className="bold-item">
-                                  {repos ? repos.stargazers_count : 0}
+                                  {repos && repos.stargazers_count ? repos.stargazers_count : 0}
                               </span> stargazers
                           </div>
                       </div>
