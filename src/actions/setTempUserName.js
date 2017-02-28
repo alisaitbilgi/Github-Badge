@@ -8,12 +8,12 @@ function setUserName(input) {
   };
 }
 
-const debounced = debounce((input, dispatch) => {
+const debouncer = debounce((input, dispatch) => {
   dispatch(setUserName(input));
 }, 500);
 
 export const setTempUserName = (input) => {
   return (dispatch) => {
-    debounced(input, dispatch);
+    debouncer(input, dispatch);
   };
 };

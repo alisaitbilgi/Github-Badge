@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from "react";
 import {connect} from "react-redux";
 import {setUserName} from "../actions/setUserName";
@@ -5,23 +7,14 @@ import {setTempUserName} from "../actions/setTempUserName";
 import {bindActionCreators} from "redux";
 
 export function Form(props) {
-
-  function onAssignTempUserName(username) {
-    props.assignTempUsername(username);
-  }
-
-  function onUserChange(evt) {
-    props.userChange(evt.target.value);
-  }
-
-  onAssignTempUserName(props.username);
+  props.assignTempUsername(props.username);
 
   return (
       <div className="form-container">
           <input
               value={props.username}
               className="inputStyle"
-              onChange={onUserChange}
+              onChange={(evt) => {props.userChange (evt.target.value)}}
               placeholder="Type your GitHub username"
           />
       </div>
@@ -30,7 +23,7 @@ export function Form(props) {
 
 function mapStateToProps(state) {
   return {
-    username: state.get("username", "")
+    username: state.get("username", ""),
   };
 }
 

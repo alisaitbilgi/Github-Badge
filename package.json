@@ -4,7 +4,7 @@
   "private": true,
   "devDependencies": {
     "eslint": "^3.15.0",
-    "genericxhr": "^1.0.0",
+    "ez-fetch-ajax": "^1.0.1",
     "lodash.debounce": "^4.0.8",
     "react-scripts": "0.8.2",
     "react-sparklines": "^1.6.0",

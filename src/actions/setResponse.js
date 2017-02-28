@@ -1,4 +1,4 @@
-import {Request} from "genericxhr/Request";
+import {Request} from "ez-fetch-ajax";
 
 export const setResponse = (username = "nzakas") => {
   return (dispatch) => {
@@ -7,7 +7,6 @@ export const setResponse = (username = "nzakas") => {
       repos: `https://api.github.com/users/${username}/repos`,
       users: `https://api.github.com/users/${username}`
     };
-
 
     Promise.all([Request.get(url.repos), Request.get(url.users)])
       .then(res => {

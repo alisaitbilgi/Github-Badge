@@ -5,7 +5,6 @@ import gitBeer from "../../public/styles/images/octopus.png";
 import Form from "./Form";
 
 export function Home(props) {
-
   return (
       <div className="article">
           <div className="content-container">
