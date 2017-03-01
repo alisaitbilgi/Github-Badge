@@ -5,34 +5,11 @@ import smallImage from "../../public/styles/images/small.png";
 import {Sparklines, SparklinesLine, SparklinesSpots} from "react-sparklines";
 import loading from "../../public/styles/images/loading.svg";
 
-export let badgeAPI = {
-  suitResponse: (userInfo, repoInfo) => {
-    if (repoInfo.constructor !== Array) {
-      return {
-        repos: repoInfo,
-        users: userInfo,
-        values: []
-      };
-    }
-    let lastWeek = new Date();
-    lastWeek.setDate((lastWeek.getDate()) - 7);
-    const values = repoInfo.map(
-      repo => Date.parse(repo.updated_at) > lastWeek.getTime() ? repo.size : 0
-    );
-    return {
-      repos: repoInfo[0],
-      users: userInfo,
-      values
-    };
-  }
-};
-
-export function Badge({badgeUserInfo, badgeRepoInfo}) {
-  const {repos, users, values} = badgeAPI.suitResponse(badgeUserInfo, badgeRepoInfo);
+export function Badge({badgeUserInfo, badgeRepoInfo, badgeGraphInfo}) {
   if (I.List.isList(badgeUserInfo) || I.List.isList(badgeRepoInfo)) {
     return (
         <div className="styleOfIframe">
-            <img className="centered" src={loading} alt="loading..."/>
+            <img className="loader" src={loading} alt="loading..."/>
         </div>
     );
   }
@@ -41,16 +18,16 @@ export function Badge({badgeUserInfo, badgeRepoInfo}) {
           <div className="styleOfIframe">
               <div className="column-1">
                   <div className="row">
-                      <a target={"_blank"} href={users.html_url || "https://github.com/404"} >
+                      <a target={"_blank"} href={badgeUserInfo.html_url || "https://github.com/404"} >
                           <img className="badge-image"
-                              src={users.avatar_url || "https://avatars2.githubusercontent.com/u/5779565?v=3&s=88"}
+                              src={badgeUserInfo.avatar_url || "https://avatars2.githubusercontent.com/u/5779565?v=3&s=88"}
                               alt="avatar"
                           />
                       </a>
                   </div>
                   <div className="row">
                       <div className="svg-wrapper">
-                          <Sparklines data={values} margin={6}>
+                          <Sparklines data={badgeGraphInfo} margin={6}>
                               <SparklinesLine style={{strokeWidth: 10, stroke: "#2c3cff", fill: "aliceblue"}} />
                               <SparklinesSpots size={4} style={{stroke: "#336aff", strokeWidth: 3, fill: "white"}} />
                           </Sparklines>
@@ -62,27 +39,27 @@ export function Badge({badgeUserInfo, badgeRepoInfo}) {
               </div>
               <div className="column-5">
                   <div className="row">
-                      <a className="link-tag" target={"_blank"} href={users.html_url || "https://github.com/404"}>
-                          {users.login || users.message }
+                      <a className="link-tag" target={"_blank"} href={badgeUserInfo.html_url || "https://github.com/404"}>
+                          {badgeUserInfo.login || badgeUserInfo.message }
                       </a>
                   </div>
                   <div className="row">
                       <p className="last-activity">
-                          {repos ? repos.name : "no recent repo activity"} {repos ? "(" + repos.language + ")" : ""}
+                          {badgeRepoInfo ? badgeRepoInfo.name : "no recent repo activity"} {badgeRepoInfo && badgeRepoInfo.language ? "(" + badgeRepoInfo.language + ")" : ""}
                       </p>
                   </div>
                   <div className="row">
                       <div className="column-5">
                           <div className="text-item">
                               <span className="bold-item">
-                                  {users.followers > 1000 ? Math.floor(users.followers / 1000, -1) + "k" : users.followers || 0}
+                                  {badgeUserInfo.followers > 1000 ? Math.floor(badgeUserInfo.followers / 1000, -1) + "k" : badgeUserInfo.followers || 0}
                               </span> followers
                           </div>
                       </div>
                       <div className="column-5">
                           <div className="text-item">
                               <span className="bold-item">
-                                  {users.public_repos || 0}
+                                  {badgeUserInfo.public_repos || 0}
                               </span> repos
                           </div>
                       </div>
@@ -91,14 +68,14 @@ export function Badge({badgeUserInfo, badgeRepoInfo}) {
                       <div className="column-5">
                           <div className="text-item">
                               <span className="bold-item">
-                                  {repos && repos.forks_count ? repos.forks_count : 0}
+                                  {badgeRepoInfo && badgeRepoInfo.forks_count ? badgeRepoInfo.forks_count : 0}
                               </span> forks
                           </div>
                       </div>
                       <div className="column-5">
                           <div className="text-item">
                               <span className="bold-item">
-                                  {repos && repos.stargazers_count ? repos.stargazers_count : 0}
+                                  {badgeRepoInfo && badgeRepoInfo.stargazers_count ? badgeRepoInfo.stargazers_count : 0}
                               </span> stargazers
                           </div>
                       </div>
@@ -112,7 +89,8 @@ export function Badge({badgeUserInfo, badgeRepoInfo}) {
 function mapStateToProps(state) {
   return {
     badgeUserInfo: state.get("badgeUserInfo", I.List()),
-    badgeRepoInfo: state.get("badgeRepoInfo", I.List())
+    badgeRepoInfo: state.get("badgeRepoInfo", I.List()),
+    badgeGraphInfo: state.get("badgeGraphInfo", [])
   };
 }
 
