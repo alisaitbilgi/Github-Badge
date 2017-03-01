@@ -8,8 +8,11 @@ footer {
     text-align: center;
 }
 
-.centered {
-    padding-left: 25%;
+.loader {
+    padding-left: 35%;
+    padding-top: 10%;
+    max-width: 70px;
+    max-height: 70px;
 }
 
 .main {
