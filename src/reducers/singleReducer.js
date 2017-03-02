@@ -22,6 +22,8 @@ export default function singleReducer(state = I.Map(), action) {
     return state.set("username", action.data);
   case "SET_TEMP_USERNAME":
     return state.set("tempUsername", action.data);
+    case "SET_ERROR_MESSAGE":
+      return state.set("errorMessage", action.data);
   default:
     return state;
   }
