@@ -17,14 +17,13 @@ export const setResponse = (username = "nzakas") => {
             repo => Date.parse(repo.updated_at) > lastWeek.getTime() ? repo.size : 0
           );
         }
+        // action's first parameter: Status, second parameter: Response Object of the server.
         dispatch(setReposInfo([res[0][0], JSON.parse(res[0][1])]));
         dispatch(setUsersInfo([res[1][0], JSON.parse(res[1][1])]));
         dispatch(setGraphInfo(values));
       })
       .catch(rej => {
-        dispatch(setUsersInfo(rej));
-        dispatch(setReposInfo(rej));
-        dispatch(setGraphInfo([]));
+        dispatch(setErrorMessage(rej));
       });
   };
 };
@@ -32,6 +31,12 @@ export const setResponse = (username = "nzakas") => {
 function setUsersInfo(data) {
   return {
     type: "SET_USER_INFO",
+    data
+  };
+}
+function setErrorMessage(data) {
+  return {
+    type: "SET_ERROR_MESSAGE",
     data
   };
 }

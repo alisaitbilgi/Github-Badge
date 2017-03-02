@@ -5,11 +5,20 @@ import smallImage from "../../public/styles/images/small.png";
 import {Sparklines, SparklinesLine, SparklinesSpots} from "react-sparklines";
 import loading from "../../public/styles/images/loading.svg";
 
-export function Badge({badgeUserInfo, badgeRepoInfo, badgeGraphInfo}) {
+export function Badge({badgeUserInfo, badgeRepoInfo, badgeGraphInfo, errorMessage}) {
   if (I.List.isList(badgeUserInfo) || I.List.isList(badgeRepoInfo)) {
     return (
         <div className="styleOfIframe">
             <img className="loader" src={loading} alt="loading..."/>
+        </div>
+    );
+  }
+  if (errorMessage instanceof Error) {
+    return (
+        <div>An error occurred on GithubAPI server!
+        Please checkout:
+            <a href="https://developer.github.com/">GitHub Developer Guide</a>
+          for details...
         </div>
     );
   }
@@ -45,7 +54,7 @@ export function Badge({badgeUserInfo, badgeRepoInfo, badgeGraphInfo}) {
                   </div>
                   <div className="row">
                       <p className="last-activity">
-                          {badgeRepoInfo ? badgeRepoInfo.name : "no recent repo activity"} {badgeRepoInfo && badgeRepoInfo.language ? "(" + badgeRepoInfo.language + ")" : ""}
+                          {badgeRepoInfo && badgeRepoInfo.name ? badgeRepoInfo.name : "no recent repo activity"} {badgeRepoInfo && badgeRepoInfo.language ? "(" + badgeRepoInfo.language + ")" : ""}
                       </p>
                   </div>
                   <div className="row">
@@ -90,7 +99,8 @@ function mapStateToProps(state) {
   return {
     badgeUserInfo: state.get("badgeUserInfo", I.List()),
     badgeRepoInfo: state.get("badgeRepoInfo", I.List()),
-    badgeGraphInfo: state.get("badgeGraphInfo", [])
+    badgeGraphInfo: state.get("badgeGraphInfo", []),
+    errorMessage: state.get("errorMessage", "")
   };
 }
 
