@@ -15,14 +15,13 @@ describe("setResponse action creator", () => {
   after(() => {
     server.restore();
   });
-
   it("should create setUsersInfo action as expected when fetching is done with 403 FORBIDDEN", () => {
     server.respondWith([403, { "Content-Type": "application/json" },
-        '[{"updated_at":1487774712694 , "id": 12, "comment": "Hey there" }]'
+      '[{"updated_at":1487774712694 , "id": 12, "comment": "Hey there" }]'
     ]);
     const testResult = store.dispatch(setResponse())
       .then((res) => {
-      expect(store.getActions()[0].data[1]).to.deep.equal([{"updated_at":1487774712694 , "id": 12, "comment": "Hey there" }]);
+        expect(store.getActions()[0].data[1]).to.deep.equal([{"updated_at":1487774712694 , "id": 12, "comment": "Hey there" }]);
       });
     server.respond();
     return testResult;
@@ -33,7 +32,7 @@ describe("setResponse action creator", () => {
     ]);
     const testResult = store.dispatch(setResponse())
       .then((res) => {
-      expect(store.getActions()[1].data[1]).to.deep.equal([{"updated_at":1487774712694 , "id": 12, "comment": "Hey there" }]);
+        expect(store.getActions()[1].data[1]).to.deep.equal([{"updated_at":1487774712694 , "id": 12, "comment": "Hey there" }]);
       });
     server.respond();
     return testResult;
@@ -115,5 +114,17 @@ describe("setResponse action creator", () => {
     server.respond();
     return testResult;
   });
-
 });
+
+describe("", () => {
+  it("should create setErrorMessage action as an error Object when fetching is done with a Server Error!", () => {
+    store = mockStore({});
+    sinon.stub(Promise, "all").returns(Promise.reject(new Error()));
+    return store.dispatch(setResponse())
+      .then(res => {
+        expect(store.getActions()[0].data).to.deep.equal(new Error());
+      });
+  });
+});
+
+
