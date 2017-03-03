@@ -1,10 +1,10 @@
 
 import debounce from "es6-promise-debounce";
 
-function setUserName(input) {
+function setUserName(data) {
   return {
     type: "SET_TEMP_USERNAME",
-    data: input
+    data
   };
 }
 
