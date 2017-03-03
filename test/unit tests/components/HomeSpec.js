@@ -2,10 +2,10 @@
 
 import React from "react";
 import {shallow} from "enzyme";
-import {Home} from "../../src/components/Home";
-import socialCoding from "../../public/styles/images/social.png";
-import gitBeer from "../../public/styles/images/octopus.png";
-import Form from "../../src/components/Form";
+import {Home} from "../../../src/components/Home";
+import socialCoding from "../../../public/styles/images/social.png";
+import gitBeer from "../../../public/styles/images/octopus.png";
+import Form from "../../../src/components/Form";
 
 describe("'Home' component", () => {
   let wrapper;

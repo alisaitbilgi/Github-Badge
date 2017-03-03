@@ -1,12 +1,12 @@
 /* eslint-disable */
 import React from "react";
 import {shallow} from "enzyme";
-import {Badge} from "../../src/components/Badge";
-import {badgeAPI} from "../../src/components/Badge";
+import {Badge} from "../../../src/components/Badge";
+import {badgeAPI} from "../../../src/components/Badge";
 import I from "immutable";
 import {Sparklines, SparklinesLine, SparklinesSpots} from "react-sparklines";
-import smallImage from "../../public/styles/images/small.png";
-import loading from "../../public/styles/images/loading.svg";
+import smallImage from "../../../public/styles/images/small.png";
+import loading from "../../../public/styles/images/loading.svg";
 
 
 describe("badge component", () => {

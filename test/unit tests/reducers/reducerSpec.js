@@ -1,5 +1,5 @@
 /* eslint-disable */
-import reducer from "../../src/reducers/singleReducer";
+import reducer from "../../../src/reducers/singleReducer";
 import I from "immutable";
 
 // initial test datas...

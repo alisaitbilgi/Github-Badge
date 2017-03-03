@@ -2,7 +2,7 @@
 
 import React from "react";
 import {shallow} from "enzyme";
-import {Form} from "../../src/components/Form";
+import {Form} from "../../../src/components/Form";
 
 describe("'Form' component", () => {
   const props = {

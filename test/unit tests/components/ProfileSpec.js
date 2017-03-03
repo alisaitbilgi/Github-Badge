@@ -1,6 +1,6 @@
 import React from "react";
 import {shallow} from "enzyme";
-import Profile from "../../src/components/Profile";
+import Profile from "../../../src/components/Profile";
 
 const wrapper = shallow(<Profile />);
 

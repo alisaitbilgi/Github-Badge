@@ -1,9 +1,9 @@
 
 import React from "react";
 import {shallow} from "enzyme";
-import App from "../../src/components/App";
-import Home from "../../src/components/Home";
-import forkImage from "../../public/styles/images/fork.png";
+import App from "../../../src/components/App";
+import Home from "../../../src/components/Home";
+import forkImage from "../../../public/styles/images/fork.png";
 
 const wrapper = shallow(<App />);
 

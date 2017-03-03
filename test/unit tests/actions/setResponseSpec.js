@@ -1,5 +1,5 @@
 /* eslint-disable */
-import {setResponse} from "../../src/actions/setResponse";
+import {setResponse} from "../../../src/actions/setResponse";
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
 

@@ -1,4 +1,4 @@
-import {setUserName} from "../../src/actions/setUserName";
+import {setUserName} from "../../../src/actions/setUserName";
 
 describe("action setUserName", () => {
   const actionType = "SET_USERNAME";
