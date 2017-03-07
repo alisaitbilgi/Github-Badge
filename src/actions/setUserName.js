@@ -1,7 +1,10 @@
 
+
 export const setUserName = (data) => {
-  return {
-    type: "SET_USERNAME",
-    data
+  return (dispatch) => {
+    return dispatch({
+      type: "SET_USERNAME",
+      data
+    });
   };
 };

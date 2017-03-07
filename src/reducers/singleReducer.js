@@ -1,6 +1,4 @@
-/* eslint-disable */
 import I from "immutable";
-
 export default function singleReducer(state = I.Map(), action) {
   switch (action.type) {
   case "SET_REPO_INFO":
@@ -22,8 +20,8 @@ export default function singleReducer(state = I.Map(), action) {
     return state.set("username", action.data);
   case "SET_TEMP_USERNAME":
     return state.set("tempUsername", action.data);
-    case "SET_ERROR_MESSAGE":
-      return state.set("errorMessage", action.data);
+  case "SET_ERROR_MESSAGE":
+    return state.set("errorMessage", action.data);
   default:
     return state;
   }

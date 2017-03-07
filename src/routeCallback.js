@@ -1,4 +1,4 @@
-import {store} from "./index";
+import {store} from "./store/configStore";
 import {setResponse} from "./actions/setResponse";
 
 export function routeCallback(nextState) {
@@ -7,5 +7,5 @@ export function routeCallback(nextState) {
     repos: `https://api.github.com/users/${username}/repos`,
     users: `https://api.github.com/users/${username}`
   };
-  store.dispatch(setResponse(url.repos, url.users));
+  return store.dispatch(setResponse(url.repos, url.users));
 }
