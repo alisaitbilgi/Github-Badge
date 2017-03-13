@@ -3,95 +3,101 @@ import {connect} from "react-redux";
 import I from "immutable";
 import smallImage from "../../public/styles/images/small.png";
 import {Sparklines, SparklinesLine, SparklinesSpots} from "react-sparklines";
-import loading from "../../public/styles/images/loading.svg";
+import {InfoItem} from "./InfoItem";
+import {LoadingIndicator} from "./LoadingIndicator";
+import {ErrorMessage} from "./ErrorMessage";
+import {RateLimit} from "./RateLimit";
+
+function suitFollower(number) {
+  const abbrv = ["k", "m", "b"];
+  const power = parseInt(Math.log10(number) / 3, 10);
+  return parseInt(number / Math.pow(1000, power), 10) + abbrv[power - 1] || number || 0;
+}
+
+function suitResponse(repoInfo, userInfo) {
+  return {
+    htmlUrl: userInfo.html_url || "https://github.com/404",
+    avatarUrl: userInfo.avatar_url || "https://avatars2.githubusercontent.com/u/5779565?v=3&s=88",
+    login: userInfo.login || userInfo.message,
+    name: repoInfo.name || "no recent repo activity",
+    language: repoInfo.language ? "(" + repoInfo.language + ")" : "",
+    followers: suitFollower(userInfo.followers),
+    repos: userInfo.public_repos || 0,
+    forks: repoInfo.forks_count || 0,
+    stargazzers: repoInfo.stargazers_count || 0
+  };
+}
 
 export function Badge({badgeUserInfo, badgeRepoInfo, badgeGraphInfo, errorMessage}) {
-  if (I.List.isList(badgeUserInfo) || I.List.isList(badgeRepoInfo)) {
-    return (
-        <div className="styleOfIframe">
-            <img className="loader" src={loading} alt="loading..."/>
-        </div>
-    );
+  if (I.List.isList(badgeUserInfo) || I.List.isList(badgeRepoInfo) || !badgeGraphInfo) {
+    return <LoadingIndicator />;
   }
-  if (errorMessage instanceof Error) {
-    return (
-        <div>An error occurred on GithubAPI server!
-        Please checkout:
-            <a href="https://developer.github.com/">GitHub Developer Guide</a>
-          for details...
-        </div>
-    );
+  if (errorMessage) {
+    return <ErrorMessage/>;
   }
+  if (badgeUserInfo.status) {
+    return <RateLimit />;
+  }
+
+  const {htmlUrl, avatarUrl, login, name, language, followers, repos, forks, stargazzers} = suitResponse(badgeRepoInfo, badgeUserInfo, badgeGraphInfo);
   return (
-      <div>
-          <div className="styleOfIframe">
-              <div className="column-1">
-                  <div className="row">
-                      <a target={"_blank"} href={badgeUserInfo.html_url || "https://github.com/404"} >
-                          <img className="badge-image"
-                              src={badgeUserInfo.avatar_url || "https://avatars2.githubusercontent.com/u/5779565?v=3&s=88"}
-                              alt="avatar"
-                          />
-                      </a>
-                  </div>
-                  <div className="row">
-                      <div className="svg-wrapper">
-                          <Sparklines data={badgeGraphInfo} margin={6}>
-                              <SparklinesLine style={{strokeWidth: 10, stroke: "#2c3cff", fill: "aliceblue"}} />
-                              <SparklinesSpots size={4} style={{stroke: "#336aff", strokeWidth: 3, fill: "white"}} />
-                          </Sparklines>
-                      </div>
-                  </div>
-                  <div className="row">
-                      <img className="badge-image" src={smallImage} alt="git-ninja"/>
-                  </div>
-              </div>
-              <div className="column-5">
-                  <div className="row">
-                      <a className="link-tag" target={"_blank"} href={badgeUserInfo.html_url || "https://github.com/404"}>
-                          {badgeUserInfo.login || badgeUserInfo.message }
-                      </a>
-                  </div>
-                  <div className="row">
-                      <p className="last-activity">
-                          {badgeRepoInfo && badgeRepoInfo.name ? badgeRepoInfo.name : "no recent repo activity"} {badgeRepoInfo && badgeRepoInfo.language ? "(" + badgeRepoInfo.language + ")" : ""}
-                      </p>
-                  </div>
-                  <div className="row">
-                      <div className="column-5">
-                          <div className="text-item">
-                              <span className="bold-item">
-                                  {badgeUserInfo.followers > 1000 ? Math.floor(badgeUserInfo.followers / 1000, -1) + "k" : badgeUserInfo.followers || 0}
-                              </span> followers
-                          </div>
-                      </div>
-                      <div className="column-5">
-                          <div className="text-item">
-                              <span className="bold-item">
-                                  {badgeUserInfo.public_repos || 0}
-                              </span> repos
-                          </div>
-                      </div>
-                  </div>
-                  <div className="row">
-                      <div className="column-5">
-                          <div className="text-item">
-                              <span className="bold-item">
-                                  {badgeRepoInfo && badgeRepoInfo.forks_count ? badgeRepoInfo.forks_count : 0}
-                              </span> forks
-                          </div>
-                      </div>
-                      <div className="column-5">
-                          <div className="text-item">
-                              <span className="bold-item">
-                                  {badgeRepoInfo && badgeRepoInfo.stargazers_count ? badgeRepoInfo.stargazers_count : 0}
-                              </span> stargazers
-                          </div>
-                      </div>
-                  </div>
-              </div>
+    <div>
+      <div className="styleOfIframe">
+        <div className="column-1">
+          <div className="row">
+            <a target="_blank" href={htmlUrl} >
+              <img className="badge-image"
+                src={avatarUrl}
+                alt="avatar"
+              />
+            </a>
           </div>
+          <div className="row">
+            <div className="svg-wrapper">
+              <Sparklines data={badgeGraphInfo} margin={6}>
+                <SparklinesLine style={{strokeWidth: 10, stroke: "#2c3cff", fill: "aliceblue"}} />
+                <SparklinesSpots size={4} style={{stroke: "#336aff", strokeWidth: 3, fill: "white"}} />
+              </Sparklines>
+            </div>
+          </div>
+          <div className="row">
+            <img className="badge-image" src={smallImage} alt="git-ninja"/>
+          </div>
+        </div>
+        <div className="column-5">
+          <div className="row">
+            <a className="link-tag" target={"_blank"} href={htmlUrl}>
+              {login}
+            </a>
+          </div>
+          <div className="row">
+            <p className="last-activity">
+              {name} {language}
+            </p>
+          </div>
+          <div className="row">
+            <InfoItem
+              num={followers}
+              name="followers"
+            />
+            <InfoItem
+              num={repos}
+              name="repos"
+            />
+          </div>
+          <div className="row">
+            <InfoItem
+              num={forks}
+              name="forks"
+            />
+            <InfoItem
+              num={stargazzers}
+              name="stargazzers"
+            />
+          </div>
+        </div>
       </div>
+    </div>
   );
 }
 
@@ -99,8 +105,8 @@ function mapStateToProps(state) {
   return {
     badgeUserInfo: state.get("badgeUserInfo", I.List()),
     badgeRepoInfo: state.get("badgeRepoInfo", I.List()),
-    badgeGraphInfo: state.get("badgeGraphInfo", []),
-    errorMessage: state.get("errorMessage", "")
+    badgeGraphInfo: state.get("badgeGraphInfo"),
+    errorMessage: state.get("errorMessage")
   };
 }
 

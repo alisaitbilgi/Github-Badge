@@ -1,4 +1,3 @@
-/* eslint-disable */
 const path = require("path");
 const testHelperPath = path.resolve("test/testHelper.js");
 

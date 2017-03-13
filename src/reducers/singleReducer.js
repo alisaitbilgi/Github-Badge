@@ -9,6 +9,7 @@ export default function singleReducer(state = I.Map(), action) {
   case "SET_USER_INFO":
     if (action.data[0] === 403) {
       return state.set("badgeUserInfo", {
+        status: 403,
         login: "API rate limit exceeded",
         html_url: "https://developer.github.com/v3/rate_limit/"
       });
@@ -18,7 +19,7 @@ export default function singleReducer(state = I.Map(), action) {
     return state.set("badgeGraphInfo", action.data);
   case "SET_USERNAME":
     return state.set("username", action.data);
-  case "SET_TEMP_USERNAME":
+  case "SET_ACTIVE_USERNAME":
     return state.set("tempUsername", action.data);
   case "SET_ERROR_MESSAGE":
     return state.set("errorMessage", action.data);

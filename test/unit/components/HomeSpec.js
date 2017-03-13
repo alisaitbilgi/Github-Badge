@@ -1,4 +1,3 @@
-/* eslint-disable */
 
 import React from "react";
 import {shallow} from "enzyme";
@@ -20,9 +19,9 @@ describe("'Home' component", () => {
     });
     it("should render iframe element with desired prop value", () => {
       expect(wrapper.contains(
-          <div className="row">
-              <iframe src={`/users/${props.tempUsername}`} className="content" scrolling="no" />
-          </div>
+        <div className="row">
+          <iframe src={`/users/${props.tempUsername}`} className="content" scrolling="no" />
+        </div>
       )).to.equal(true);
     });
   });
@@ -34,9 +33,9 @@ describe("'Home' component", () => {
     });
     it("should render iframe element with fallback prop value", () => {
       expect(wrapper.contains(
-          <div className="row">
-              <iframe src={"/users"} className="content" scrolling="no" />
-          </div>
+        <div className="row">
+          <iframe src={"/users"} className="content" scrolling="no" />
+        </div>
       )).to.equal(true);
     });
   });
@@ -45,22 +44,22 @@ describe("'Home' component", () => {
     it("should render all content elements and form", () => {
       wrapper = shallow(Home(props));
       expect(wrapper.contains(
-          <div className="article">
-              <div className="content-container">
-                  <div className="badge-side">
-                      <div className="row">
-                          <img className="social-coding-image" src={socialCoding} alt="social_coding" />
-                      </div>
-                      <div className="row">
-                          <iframe src={"/users"} className="content" scrolling="no" />
-                      </div>
-                  </div>
-                  <div className="image-side">
-                      <img className="octopus-image" src={gitBeer} alt="octopus" />
-                  </div>
+        <div className="article">
+          <div className="content-container">
+            <div className="badge-side">
+              <div className="row">
+                <img className="social-coding-image" src={socialCoding} alt="social_coding" />
               </div>
-              <Form />
+              <div className="row">
+                <iframe src={"/users"} className="content" scrolling="no" />
+              </div>
+            </div>
+            <div className="image-side">
+              <img className="octopus-image" src={gitBeer} alt="octopus" />
+            </div>
           </div>
+          <Form />
+        </div>
       )).to.equal(true);
     });
     it("should render all content elements and form", () => {
@@ -69,26 +68,25 @@ describe("'Home' component", () => {
       };
       wrapper = shallow(Home(props));
       expect(wrapper.contains(
-          <div className="article">
-              <div className="content-container">
-                  <div className="badge-side">
-                      <div className="row">
-                          <img className="social-coding-image" src={socialCoding} alt="social_coding" />
-                      </div>
-                      <div className="row">
-                          <iframe src={`/users/${props.tempUsername}`} className="content" scrolling="no" />
-                      </div>
-                  </div>
-                  <div className="image-side">
-                      <img className="octopus-image" src={gitBeer} alt="octopus" />
-                  </div>
+        <div className="article">
+          <div className="content-container">
+            <div className="badge-side">
+              <div className="row">
+                <img className="social-coding-image" src={socialCoding} alt="social_coding" />
               </div>
-              <Form />
+              <div className="row">
+                <iframe src={`/users/${props.tempUsername}`} className="content" scrolling="no" />
+              </div>
+            </div>
+            <div className="image-side">
+              <img className="octopus-image" src={gitBeer} alt="octopus" />
+            </div>
           </div>
+          <Form />
+        </div>
       )).to.equal(true);
     });
   });
-
 });
 
 

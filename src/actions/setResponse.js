@@ -5,12 +5,11 @@ export const setResponse = (repos, users) => {
     return Promise.all([Request.get(repos), Request.get(users)])
       .then(res => {
         let lastWeek = new Date();
-        let values;
+        let values = [];
         lastWeek.setDate((lastWeek.getDate()) - 7);
         const repoResult = JSON.parse(res[0][1]);
         const userResult = JSON.parse(res[1][1]);
-        const repoStatus = res[0][0];
-        const userStatus = res[1][0];
+        const [[repoStatus], [userStatus]] = res;
 
         if (Array.isArray(repoResult)) {
           values = repoResult.map(

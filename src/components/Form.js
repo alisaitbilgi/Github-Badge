@@ -1,21 +1,17 @@
 import React from "react";
 import {connect} from "react-redux";
 import {setUserName} from "../actions/setUserName";
-import {setTempUserName} from "../actions/setTempUserName";
-import {store} from "../store/configStore";
 
-export function Form({username}) {
-  store.dispatch(setTempUserName(username));
-
+export function Form({username, dispatch}) {
   return (
-      <div className="form-container">
-          <input
-              value={username}
-              className="inputStyle"
-              onChange={function(evt) {store.dispatch(setUserName(evt.target.value));}}
-              placeholder="Type your GitHub username"
-          />
-      </div>
+    <div className="form-container">
+      <input
+        value={username}
+        className="inputStyle"
+        onChange={function(evt) {dispatch(setUserName(evt.target.value));}}
+        placeholder="Type your GitHub username"
+      />
+    </div>
   );
 }
 

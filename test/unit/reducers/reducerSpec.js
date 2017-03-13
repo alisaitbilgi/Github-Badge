@@ -31,7 +31,7 @@ const SET_USERNAME = {
   data: 3241
 };
 const SET_TEMP_USERNAME = {
-  type: "SET_TEMP_USERNAME",
+  type: "SET_ACTIVE_USERNAME",
   data: {any: "bla"}
 };
 const SET_ERROR_MESSAGE = {
@@ -55,6 +55,7 @@ describe("singleReducer ", () => {
     it("set_user_info action and return new Map with badgeUserInfo key if status is 403-FORBIDDEN.", () => {
       expect(reducer(I.Map(), SET_USER_INFO_STATUS_FORBIDDEN))
         .to.deep.equal(I.Map().set("badgeUserInfo", {
+          status: 403,
           login: "API rate limit exceeded",
           html_url: "https://developer.github.com/v3/rate_limit/"
         }));
@@ -81,3 +82,4 @@ describe("singleReducer ", () => {
     });
   });
 });
+

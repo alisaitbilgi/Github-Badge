@@ -8,12 +8,12 @@ const wrapper = shallow(<NavigationBar />);
 describe("'Profile' component", () => {
   it("should contain related elements ", () => {
     expect(wrapper.contains(
-        <div>
-            <footer>
-                <Link to="/">Home </Link>
-                <Link to="/profile">Profile</Link>
-            </footer>
-        </div>
+      <div>
+        <footer>
+          <Link to="/">Home </Link>
+          <Link to="/profile">Profile</Link>
+        </footer>
+      </div>
     )).to.equal(true);
   });
 });

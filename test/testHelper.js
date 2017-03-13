@@ -1,4 +1,3 @@
-/* eslint-disable */
 import "babel-polyfill";
 import "whatwg-fetch";
 
